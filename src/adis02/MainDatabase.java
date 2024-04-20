@@ -1,7 +1,9 @@
 package adis02;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MainDatabase {
@@ -31,6 +33,13 @@ public class MainDatabase {
 
             // Perform database operations here
             // Example: executing SQL queries, updating data, etc.
+
+            DatabaseMetaData dbmt = connection.getMetaData();
+            ResultSet rs = dbmt.getCatalogs();
+            while (rs.next()) {
+                System.out.println("Catalog: " + rs.getString(1));
+            }
+
         } catch (SQLException e) {
             System.out.println("Connection failed.");
             e.printStackTrace();
