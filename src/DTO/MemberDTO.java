@@ -3,81 +3,82 @@ package DTO;
 import java.math.BigInteger;
 
 public class MemberDTO {
-    private BigInteger memberId;
+    private BigInteger memberID;
     private int memberType;
     private String memberName;
-    private String address;
-    private String phone;
-    private String representative;
-    private String email;
-    private String password;
+    private String memberAddress;
+    private String memberPhone;
+    private String memberRepresentative;
+    private String memberEmail;
+    private String memberPassword;
     public MemberDTO(){}
-    public MemberDTO(BigInteger memberId, int memberType, String memberName, String address, String phone, String representative, String email, String password){
-        this.memberId=memberId;
-        this.memberType=memberType;
-        this.memberName=memberName;
-        this.address=address;
-        this.phone=phone;
-        this.representative=representative;
-        this.email=email;
-        this.password=password;
+    public MemberDTO(BigInteger member_id, int member_type, String member_name, String address, String phone, String representative, String email, String password){
+        this.memberID=member_id;
+        this.memberType=member_type;
+        this.memberName=member_name;
+        this.memberAddress=address;
+        this.memberPhone=phone;
+        this.memberRepresentative=representative;
+        this.memberEmail=email;
+        this.memberPassword=password;
     }
-    public MemberDTO(int memberType, String memberName, String address, String phone, String representative, String email, String password){
-        this.memberType=memberType;
-        this.memberName=memberName;
-        this.address=address;
-        this.phone=phone;
-        this.representative=representative;
-        this.email=email;
-        this.password=password;
+    public MemberDTO(int member_type, String member_name, String address, String phone, String representative, String email, String password){
+        this.memberType=member_type;
+        this.memberName=member_name;
+        this.memberAddress=address;
+        this.memberPhone=phone;
+        this.memberRepresentative=representative;
+        this.memberEmail=email;
+        this.memberPassword=password;
     }
-    public BigInteger getID(){
-        return memberId;
+    public BigInteger getMemberID() {
+        return memberID;
     }
-    public void setID(BigInteger memberId){
-        this.memberId=memberId;
+    public void setMemberID(BigInteger member_id) {
+        this.memberID = member_id;
     }
-    public int getType(){
+    public int getMemberType() {
         return memberType;
     }
-    public void setType(int memberType){
-        this.memberType=memberType;
+    public void setMemberType(int member_type) {
+        this.memberType = member_type;
     }
-    public String getName(){
+    public String getMemberName() {
         return memberName;
     }
-    public void setName(String memberName){
-        this.memberName=memberName;
+    public void setMemberName(String member_name) {
+        this.memberName = member_name;
     }
-    public String getAddress(){
-        return address;
+    public String getMemberAddress() {
+        return memberAddress;
     }
-    public void setAddress(String address){
-        this.address=address;
+    public void setMemberAddress(String address) {
+        this.memberAddress = address;
     }
-    public String getPhone(){
-        return phone;
+    public String getMemberPhone() {
+        return memberPhone;
     }
-    public void setPhone(String phone){
-        this.phone=phone;
+    public void setMemberPhone(String phone) {
+        this.memberPhone = phone;
     }
-    public String getRepresentative(){
-        return representative;
+    public String getMemberRepresentative() {
+        return memberRepresentative;
     }
-    public void setRepresentative(String representative){
-        this.representative=representative;
+    public void setMemberRepresentative(String representative) {
+        this.memberRepresentative = representative;
     }
-    public String getEmail(){
-        return email;
+    public String getMemberEmail() {
+        return memberEmail;
     }
-    public void setEmail(String email){
-        this.email=email;
+    public void setMemberEmail(String email) {
+        this.memberEmail = email;
     }
-    public String getPassword(){
-        return password;
+    public String getMemberPassword() {
+        return memberPassword;
     }
-    public void setPassword(String password){
-        this.password=password;
+    public void setMemberPassword(String password) {
+        this.memberPassword = password;
     }
+    
 
 }
