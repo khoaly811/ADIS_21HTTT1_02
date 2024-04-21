@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class RecruitmentDTO {
     private BigInteger recruitmentId;
-    private BigInteger companyId;
     private String position;
     private int numberOfPosition;
     private Date startDate;
@@ -14,10 +13,9 @@ public class RecruitmentDTO {
 
     public RecruitmentDTO() {}
 
-    public RecruitmentDTO(BigInteger recruitmentId, BigInteger companyId, String position,
+    public RecruitmentDTO(BigInteger recruitmentId, String position,
                           int numberOfPosition, Date startDate, Date endDate, String requirement) {
         this.recruitmentId = recruitmentId;
-        this.companyId = companyId;
         this.position = position;
         this.numberOfPosition = numberOfPosition;
         this.startDate = startDate;
@@ -40,14 +38,6 @@ public class RecruitmentDTO {
 
     public void setRecruitmentId(BigInteger recruitmentId) {
         this.recruitmentId = recruitmentId;
-    }
-
-    public BigInteger getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(BigInteger companyId) {
-        this.companyId = companyId;
     }
 
     public String getPosition() {
