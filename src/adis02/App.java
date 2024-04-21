@@ -3,9 +3,7 @@ package adis02;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 
 public class App extends javafx.application.Application {
