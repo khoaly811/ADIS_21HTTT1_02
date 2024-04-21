@@ -13,6 +13,7 @@ public class App extends javafx.application.Application {
     public void start(Stage stage) throws Exception {
         scene = new Scene(loadFXML("../views/loginPage"));
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
