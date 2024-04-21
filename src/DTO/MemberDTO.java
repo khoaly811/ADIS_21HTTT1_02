@@ -3,28 +3,28 @@ package DTO;
 import java.math.BigInteger;
 
 public class MemberDTO {
-    private BigInteger member_id;
-    private int member_type;
-    private String member_name;
+    private BigInteger memberId;
+    private int memberType;
+    private String memberName;
     private String address;
     private String phone;
     private String representative;
     private String email;
     private String password;
     public MemberDTO(){}
-    public MemberDTO(BigInteger member_id, int member_type, String member_name, String address, String phone, String representative, String email, String password){
-        this.member_id=member_id;
-        this.member_type=member_type;
-        this.member_name=member_name;
+    public MemberDTO(BigInteger memberId, int memberType, String memberName, String address, String phone, String representative, String email, String password){
+        this.memberId=memberId;
+        this.memberType=memberType;
+        this.memberName=memberName;
         this.address=address;
         this.phone=phone;
         this.representative=representative;
         this.email=email;
         this.password=password;
     }
-    public MemberDTO(int member_type, String member_name, String address, String phone, String representative, String email, String password){
-        this.member_type=member_type;
-        this.member_name=member_name;
+    public MemberDTO(int memberType, String memberName, String address, String phone, String representative, String email, String password){
+        this.memberType=memberType;
+        this.memberName=memberName;
         this.address=address;
         this.phone=phone;
         this.representative=representative;
@@ -32,22 +32,22 @@ public class MemberDTO {
         this.password=password;
     }
     public BigInteger getID(){
-        return member_id;
+        return memberId;
     }
-    public void setID(BigInteger member_id){
-        this.member_id=member_id;
+    public void setID(BigInteger memberId){
+        this.memberId=memberId;
     }
     public int getType(){
-        return member_type;
+        return memberType;
     }
-    public void setType(int member_type){
-        this.member_type=member_type;
+    public void setType(int memberType){
+        this.memberType=memberType;
     }
     public String getName(){
-        return member_name;
+        return memberName;
     }
-    public void setName(String member_name){
-        this.member_name=member_name;
+    public void setName(String memberName){
+        this.memberName=memberName;
     }
     public String getAddress(){
         return address;
