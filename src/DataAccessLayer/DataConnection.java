@@ -36,14 +36,30 @@ public class DataConnection {
         }
     }
 
-    public static void createNewComAcc(MemberDTO companyAccount) {
+    private static int numberOfAcc() {
+        int count = 0;
+        try {
+            // Count the number of accounts in the database
+            PreparedStatement countAcc = connect.prepareStatement("SELECT COUNT(*) FROM member");
+            countAcc.execute();
+            count = countAcc.getResultSet().next() ? countAcc.getResultSet().getInt(1) : 0;
+
+            System.out.println("Number of accounts: " + count);
+        } catch (SQLException e) {
+            System.out.println("Failed to count the number of accounts.");
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public static boolean createNewComAcc(MemberDTO companyAccount) {
         try {
             // Insert the new company account into the database
             PreparedStatement createComAcc = connect.prepareStatement(
-                    "INSERT INTO member (member_id, member_type, member_name, address, phone, representative, email, password, taxNum) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    "INSERT INTO member (member_id,member_type, member_name, address, phone, representative, email, password, tax_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Set the values for the new company account
-            createComAcc.setInt(1, 2);
+            createComAcc.setInt(1, numberOfAcc() + 1);
             createComAcc.setInt(2, 2);
             createComAcc.setString(3, companyAccount.getMemberName());
             createComAcc.setString(4, companyAccount.getMemberAddress());
@@ -57,9 +73,34 @@ public class DataConnection {
             createComAcc.executeUpdate();
 
             System.out.println("New company account created.");
+            return true;
         } catch (SQLException e) {
             System.out.println("Failed to create new company account.");
             e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static int loginAcc(String phoneNumber, String password) {
+        int memberType = -1;
+        try {
+            // Check if the account exists in the database
+            PreparedStatement loginAcc = connect
+                    .prepareStatement("SELECT member_type FROM member WHERE phone = ? AND password = ?");
+            loginAcc.setString(1, phoneNumber);
+            loginAcc.setString(2, password);
+            loginAcc.execute();
+
+            // Get the member type of the account
+            loginAcc.getResultSet().next();
+            memberType = loginAcc.getResultSet().getInt(1);
+
+            System.out.println("Member type: " + memberType);
+            return memberType;
+        } catch (SQLException e) {
+            System.out.println("Failed to login.");
+            e.printStackTrace();
+            return -1;
         }
     }
 }

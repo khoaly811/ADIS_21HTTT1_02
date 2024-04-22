@@ -1,9 +1,11 @@
 package controllers;
 
+import DataAccessLayer.DataConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -13,7 +15,7 @@ import javafx.stage.Stage;
 
 public class LoginController {
     @FXML
-    private TextField usernameTxtField;
+    private TextField phoneTxtField;
 
     @FXML
     private PasswordField passwordTxtField;
@@ -29,14 +31,14 @@ public class LoginController {
 
     @FXML
     private void login() throws Exception {
-        String username = usernameTxtField.getText();
+        String phone = phoneTxtField.getText();
         String password = passwordTxtField.getText();
 
-        if (username.equals("staff") && password.equals("staff")) {
+        if (phone.equals("staff") && password.equals("staff")) {
             Parent root = FXMLLoader.load(getClass().getResource("../views/staffHomePage.fxml"));
             Stage window = (Stage) signinBtn.getScene().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
-        } else if (username.equals("company") && password.equals("company")) {
+        } else if (DataConnection.loginAcc(phone, password) == 2) {
             Parent root = FXMLLoader.load(getClass().getResource("../views/companyHomePage.fxml"));
             Stage window = (Stage) signinBtn.getScene().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));

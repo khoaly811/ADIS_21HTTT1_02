@@ -17,17 +17,17 @@ public class MemberDTO {
     }
 
     // Company account constructor
-    public MemberDTO(BigInteger ID, String name, String address, String phone, String representative, String email,
-            String taxNumber) {
-        this.memberID = ID;
-        this.memberName = name;
+    public MemberDTO(int i, String comName, String address, String phone, String representative, String email,
+            String taxNum, String password) {
+        this.memberType = i;
+        this.memberName = comName;
         this.memberAddress = address;
         this.memberPhone = phone;
         this.memberRepresentative = representative;
         this.memberEmail = email;
-        this.taxNumber = taxNumber;
+        this.taxNumber = taxNum;
+        this.memberPassword = password;
     }
-
 
     public MemberDTO(BigInteger member_id, int member_type, String member_name, String address, String phone,
             String representative, String email, String password) {

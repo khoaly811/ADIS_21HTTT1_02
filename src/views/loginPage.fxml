@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane
-   xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="controllers.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="53.0" text="MEET CV"
          textAlignment="CENTER">
@@ -18,18 +18,18 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="signinBtn" layoutX="774.0" layoutY="547.0" mnemonicParsing="false"
-         onAction="#login" prefHeight="39.0" prefWidth="362.0" text="Sign in">
+      <Button fx:id="signinBtn" layoutX="784.0" layoutY="543.0" mnemonicParsing="false"
+         onAction="#login" prefHeight="51.0" prefWidth="412.0" text="Sign in">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="731.0" layoutY="648.0" text="You are an employee ?">
+      <Label layoutX="758.0" layoutY="649.0" text="You are an employee ?">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="866.0" layoutY="161.0" text="SIGN IN">
+      <Label layoutX="868.0" layoutY="169.0" text="SIGN IN">
          <font>
             <Font name="System Bold" size="64.0" />
          </font>
@@ -39,44 +39,33 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="employeeHyperlink" layoutX="1039.0" layoutY="645.0" text="Get hired now">
+      <Hyperlink fx:id="employeeHyperlink" layoutX="1012.0" layoutY="647.0" text="Get hired now">
          <font>
             <Font size="24.0" />
          </font>
       </Hyperlink>
-      <Label layoutX="673.0" layoutY="715.0" text="You are from a company ?">
+      <Label layoutX="720.0" layoutY="709.0" text="You are from a company ?">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="companyHyperlink" layoutX="1025.0" layoutY="707.0"
-         onAction="#showSignupPage"
-         text="Create your account">
+      <Hyperlink fx:id="companyHyperlink" layoutX="1014.0" layoutY="707.0"
+         onAction="#showSignupPage" text="Create your account">
          <font>
             <Font size="24.0" />
          </font>
       </Hyperlink>
-      <TextField fx:id="usernameTxtField" layoutX="932.0" layoutY="361.0"
-         promptText="Input your username">
+      <TextField fx:id="phoneTxtField" layoutX="784.0" layoutY="371.0" prefHeight="51.0"
+         prefWidth="415.0" promptText="Phone number">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordTxtField" layoutX="936.0" layoutY="464.0"
-         promptText="Input your password">
+      <PasswordField fx:id="passwordTxtField" layoutX="784.0" layoutY="462.0" prefHeight="51.0"
+         prefWidth="415.0" promptText="Password">
          <font>
             <Font size="24.0" />
          </font>
       </PasswordField>
-      <Label layoutX="720.0" layoutY="460.0" text="Password">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="711.0" layoutY="372.0" text="Username">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
    </children>
 </Pane>
