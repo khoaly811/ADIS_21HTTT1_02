@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.comHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.comProposalController">
    <children>
       <Button fx:id="homeBtn" layoutX="120.0" layoutY="310.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="156.0" text="Home">
          <font>
@@ -30,7 +30,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="proposalBtn" layoutX="120.0" layoutY="830.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="156.0" text="Proposal" onAction="#showProposalPage">
+      <Button fx:id="proposalBtn" layoutX="120.0" layoutY="830.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="156.0" text="Proposal">
          <font>
             <Font size="24.0" />
          </font>
@@ -46,7 +46,7 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Label layoutX="639.0" layoutY="494.0" text="HomePage">
+            <Label layoutX="639.0" layoutY="494.0" text="ProposalPage">
                <font>
                   <Font size="48.0" />
                </font>

@@ -46,7 +46,14 @@ public class LoginController {
         String phone = phoneTxtField.getText();
         String password = passwordTxtField.getText();
 
-        if (phone.equals("staff") && password.equals("staff")) {
+        if (phone.isEmpty() || password.isEmpty()) {
+            // Show error message
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Please fill in all fields");
+            alert.showAndWait();
+            return;
+        } else if (phone.equals("staff") && password.equals("staff")) {
             Parent root = FXMLLoader.load(getClass().getResource("../views/staffHomePage.fxml"));
             Stage window = (Stage) signinBtn.getScene().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
