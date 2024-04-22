@@ -30,7 +30,7 @@ public class MemberDTO {
     }
 
     public MemberDTO(BigInteger member_id, int member_type, String member_name, String address, String phone,
-            String representative, String email, String password) {
+            String representative, String email, String password, String tax_number) {
         this.memberID = member_id;
         this.memberType = member_type;
         this.memberName = member_name;
@@ -39,17 +39,7 @@ public class MemberDTO {
         this.memberRepresentative = representative;
         this.memberEmail = email;
         this.memberPassword = password;
-    }
-
-    public MemberDTO(int member_type, String member_name, String address, String phone, String representative,
-            String email, String password) {
-        this.memberType = member_type;
-        this.memberName = member_name;
-        this.memberAddress = address;
-        this.memberPhone = phone;
-        this.memberRepresentative = representative;
-        this.memberEmail = email;
-        this.memberPassword = password;
+        this.taxNumber = tax_number;
     }
 
     public BigInteger getMemberID() {

@@ -1,5 +1,6 @@
 package DataAccessLayer;
 
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -81,26 +82,53 @@ public class DataConnection {
         }
     }
 
-    public static int loginAcc(String phoneNumber, String password) {
-        int memberType = -1;
+    public static MemberDTO loginAcc(String phoneNumber, String password) {
         try {
             // Check if the account exists in the database
             PreparedStatement loginAcc = connect
-                    .prepareStatement("SELECT member_type FROM member WHERE phone = ? AND password = ?");
+                    .prepareStatement("SELECT * FROM member WHERE phone = ? AND password = ?");
             loginAcc.setString(1, phoneNumber);
             loginAcc.setString(2, password);
             loginAcc.execute();
 
-            // Get the member type of the account
-            loginAcc.getResultSet().next();
-            memberType = loginAcc.getResultSet().getInt(1);
+            // If the account exists, get the account information
+            if (loginAcc.getResultSet().next()) {
 
-            System.out.println("Member type: " + memberType);
-            return memberType;
+                BigInteger memberID = BigInteger.valueOf(loginAcc.getResultSet().getLong(1));
+                int memberType = loginAcc.getResultSet().getInt(2);
+                String memberName = loginAcc.getResultSet().getString(3);
+                String memberEmail = loginAcc.getResultSet().getString(4);
+                String memberAddress = loginAcc.getResultSet().getString(5);
+                String memberPhone = loginAcc.getResultSet().getString(6);
+                String memberRepresentative = loginAcc.getResultSet().getString(7);
+                String taxNumber = loginAcc.getResultSet().getString(8);
+                String memberPassword = loginAcc.getResultSet().getString(9);
+
+                // Create a new MemberDTO object
+                MemberDTO member = new MemberDTO(memberID, memberType, memberName,
+                        memberEmail, memberAddress, memberPhone,
+                        memberRepresentative, taxNumber, memberPassword);
+
+                System.out.println("Logged in successfully.");
+                return member;
+            } else {
+                System.out.println("Account does not exist.");
+                return null;
+            }
         } catch (SQLException e) {
             System.out.println("Failed to login.");
             e.printStackTrace();
-            return -1;
+            return null;
+        }
+    }
+
+    public static void disconnect() {
+        try {
+            connect.close();
+            System.out.println("Disconnected from the database.");
+        } catch (SQLException e) {
+            System.out.println("Failed to disconnect from the database.");
+            e.printStackTrace();
         }
     }
 }

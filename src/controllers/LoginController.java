@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -30,6 +29,19 @@ public class LoginController {
     private Hyperlink companyHyperlink;
 
     @FXML
+    private void initialize() {
+        passwordTxtField.setOnKeyPressed(e -> {
+            if (e.getCode().toString().equals("ENTER")) {
+                try {
+                    login();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @FXML
     private void login() throws Exception {
         String phone = phoneTxtField.getText();
         String password = passwordTxtField.getText();
@@ -38,10 +50,20 @@ public class LoginController {
             Parent root = FXMLLoader.load(getClass().getResource("../views/staffHomePage.fxml"));
             Stage window = (Stage) signinBtn.getScene().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
-        } else if (DataConnection.loginAcc(phone, password) == 2) {
-            Parent root = FXMLLoader.load(getClass().getResource("../views/companyHomePage.fxml"));
-            Stage window = (Stage) signinBtn.getScene().getWindow();
-            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+        } else if (DataConnection.loginAcc(phone, password) != null) {
+            if (DataConnection.loginAcc(phone, password).getMemberType() == 2) {
+                // Company account
+                // Redirect to company home page
+                Parent root = FXMLLoader.load(getClass().getResource("../views/companyHomePage.fxml"));
+                Stage window = (Stage) signinBtn.getScene().getWindow();
+                window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            } else {
+                // Employee account
+                // Redirect to employee home page
+                Parent root = FXMLLoader.load(getClass().getResource("../views/employeeHomePage.fxml"));
+                Stage window = (Stage) signinBtn.getScene().getWindow();
+                window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+            }
         } else {
             // Show error message
             Alert alert = new Alert(Alert.AlertType.ERROR);
