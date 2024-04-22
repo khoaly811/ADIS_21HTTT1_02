@@ -1,13 +1,20 @@
 package adis02;
 
+import java.io.IOException;
+import DataAccessLayer.DataConnection;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
 
 public class App extends javafx.application.Application {
     private static Scene scene;
+
+    @Override
+    public void init() throws Exception {
+        DataConnection.connect();
+        super.init();
+    }
 
     @Override
     public void start(Stage stage) throws Exception {

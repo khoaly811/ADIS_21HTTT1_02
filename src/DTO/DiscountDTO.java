@@ -1,25 +1,26 @@
-package DTO;
-
-import java.math.BigInteger;
+package dto;
 
 public class DiscountDTO {
-    private BigInteger discountID;
+    private Integer discountID;
     private String description;
     private double discountPercentage;
+    private Integer companyID;
 
-    public DiscountDTO() {}
+    public DiscountDTO() {
+    }
 
-    public DiscountDTO(BigInteger discountID, String description, double discountPercentage) {
+    public DiscountDTO(Integer discountID, String description, double discountPercentage, Integer companyID) {
         this.discountID = discountID;
         this.description = description;
         this.discountPercentage = discountPercentage;
+        this.companyID = companyID;
     }
 
-    public BigInteger getDiscountID() {
+    public Integer getDiscountID() {
         return discountID;
     }
 
-    public void setDiscountID(BigInteger discountID) {
+    public void setDiscountID(Integer discountID) {
         this.discountID = discountID;
     }
 
@@ -37,5 +38,13 @@ public class DiscountDTO {
 
     public void setDiscountPercentage(double discountPercentage) {
         this.discountPercentage = discountPercentage;
+    }
+
+    public Integer getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(Integer companyID) {
+        this.companyID = companyID;
     }
 }

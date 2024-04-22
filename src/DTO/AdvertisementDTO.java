@@ -1,31 +1,40 @@
-package DTO;
+package dto;
 
 public class AdvertisementDTO {
     private int adID;
-    private String adContent;
-    private int adMethod;
-    public AdvertisementDTO(){}
-    public AdvertisementDTO(int advertisement_id, String content, int method){
-        this.adID=advertisement_id;
-        this.adContent=content;
-        this.adMethod=method;
+    private String content;
+    private int method;
+
+    public AdvertisementDTO() {
     }
+
+    public AdvertisementDTO(int adID, String content, int method) {
+        this.adID = adID;
+        this.content = content;
+        this.method = method;
+    }
+
     public int getAdID() {
         return adID;
     }
-    public void setAdID(int advertisement_id) {
-        this.adID = advertisement_id;
+
+    public void setAdID(int adID) {
+        this.adID = adID;
     }
-    public String getAdContent() {
-        return adContent;
+
+    public String getContent() {
+        return content;
     }
-    public void setAdContent(String content) {
-        this.adContent = content;
+
+    public void setContent(String content) {
+        this.content = content;
     }
-    public int getAdMethod() {
-        return adMethod;
+
+    public int getMethod() {
+        return method;
     }
-    public void setAdMethod(int method) {
-        this.adMethod = method;
+
+    public void setMethod(int method) {
+        this.method = method;
     }
 }

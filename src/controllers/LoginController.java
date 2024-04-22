@@ -50,7 +50,7 @@ public class LoginController {
     }
 
     @FXML
-    private void createComAcc() throws Exception {
+    private void showSignupPage() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../views/createComPage.fxml"));
         Stage window = (Stage) companyHyperlink.getScene().getWindow();
         window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
