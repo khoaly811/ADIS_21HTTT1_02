@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.Optional;
 
-import DataAccessLayer.DataConnection;
+import DataAccessLayer.comAccDB;
 import dto.MemberDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,7 +67,7 @@ public class SignupController {
             return;
         } else {
             MemberDTO newComAcc = new MemberDTO(2, comName, address, phone, representative, email, taxNum, password);
-            if (DataConnection.createNewComAcc(newComAcc)) {
+            if (comAccDB.createNewComAcc(newComAcc)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText("Company account created successfully");

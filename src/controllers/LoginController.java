@@ -1,6 +1,7 @@
 package controllers;
 
-import DataAccessLayer.DataConnection;
+import DataAccessLayer.comAccDB;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +31,7 @@ public class LoginController {
 
     @FXML
     private void initialize() {
+        Platform.runLater(() -> phoneTxtField.requestFocus());
         passwordTxtField.setOnKeyPressed(e -> {
             if (e.getCode().toString().equals("ENTER")) {
                 try {
@@ -57,11 +59,11 @@ public class LoginController {
             Parent root = FXMLLoader.load(getClass().getResource("../views/staffHomePage.fxml"));
             Stage window = (Stage) signinBtn.getScene().getWindow();
             window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
-        } else if (DataConnection.loginAcc(phone, password) != null) {
-            if (DataConnection.loginAcc(phone, password).getMemberType() == 2) {
+        } else if (comAccDB.loginAcc(phone, password) != null) {
+            if (comAccDB.loginAcc(phone, password).getMemberType() == 2) {
                 // Company account
                 // Redirect to company home page
-                Parent root = FXMLLoader.load(getClass().getResource("../views/companyHomePage.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../views/comHomePage.fxml"));
                 Stage window = (Stage) signinBtn.getScene().getWindow();
                 window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
             } else {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="./styles.css">
+   <children>
+      <Label layoutX="764.0" layoutY="118.0" text="Create advertising proposal">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <TextField layoutX="680.0" layoutY="444.0" promptText="Advertising length" />
+      <TextField layoutX="680.0" layoutY="342.0" promptText="Quantity" />
+      <TextField layoutX="670.0" layoutY="218.0" prefHeight="80.0" prefWidth="428.0" promptText="Position" />
+      <TextField layoutX="680.0" layoutY="512.0" prefHeight="252.0" prefWidth="426.0" promptText="Job description" />
+      <JFXButton fx:id="createBtn" layoutX="852.0" layoutY="822.0" prefHeight="98.0" prefWidth="186.0" ripplerFill="RED" text="Create">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

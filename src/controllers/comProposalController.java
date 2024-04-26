@@ -21,4 +21,16 @@ public class comProposalController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void showAddProposalPage() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../views/createProposalPage.fxml"));
+            Stage window = (Stage) avaImgView.getScene().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
