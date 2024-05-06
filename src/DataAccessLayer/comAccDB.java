@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import dto.MemberDTO;
+import DTO.MemberDTO;
 
 public class comAccDB {
     private static Connection connect = DataConnection.connect;
