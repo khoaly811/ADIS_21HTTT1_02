@@ -65,7 +65,6 @@ public class comAccDB {
 
             // If the account exists, get the account information
             if (loginAcc.getResultSet().next()) {
-
                 BigInteger memberID = BigInteger.valueOf(loginAcc.getResultSet().getLong(1));
                 int memberType = loginAcc.getResultSet().getInt(2);
                 String memberName = loginAcc.getResultSet().getString(3);
@@ -80,6 +79,8 @@ public class comAccDB {
                 MemberDTO member = new MemberDTO(memberID, memberType, memberName,
                         memberEmail, memberAddress, memberPhone,
                         memberRepresentative, taxNumber, memberPassword);
+
+                DataConnection.loginedAccount = member;
 
                 System.out.println("Logged in successfully.");
                 return member;

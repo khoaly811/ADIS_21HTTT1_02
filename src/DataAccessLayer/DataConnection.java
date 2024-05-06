@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import dto.MemberDTO;
+
 public class DataConnection {
     public static Connection connect;
+    public static MemberDTO loginedAccount;
 
     public static void connect() throws ClassNotFoundException {
         String dbUrl = "jdbc:postgresql://dpg-co5q82ev3ddc7394t4d0-a.singapore-postgres.render.com:5432/pttk_hcmus_21";

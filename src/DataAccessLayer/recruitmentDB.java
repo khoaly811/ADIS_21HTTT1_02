@@ -49,4 +49,27 @@ public class recruitmentDB {
             return false;
         }
     }
+
+    public static boolean createProposal(int company_id, String position, int quantity, int length,
+            String jobDescription) {
+        try {
+            // Insert a new proposal into the database
+            PreparedStatement insertProposal = connect.prepareStatement(
+                    "INSERT INTO recruitment (recruitment_id, company_id, position, number_of_positions, length, requirements) VALUES (?, ?, ?, ?, ?, ?)");
+            insertProposal.setInt(1, numberOfRecruitment() + 1);
+            insertProposal.setInt(2, company_id);
+            insertProposal.setString(3, position);
+            insertProposal.setInt(4, quantity);
+            insertProposal.setInt(5, length);
+            insertProposal.setString(6, jobDescription);
+            insertProposal.execute();
+
+            System.out.println("Proposal created successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Failed to create a new proposal.");
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
