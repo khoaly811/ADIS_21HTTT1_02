@@ -5,21 +5,23 @@ import java.util.Date;
 
 public class RecruitmentDTO {
     private BigInteger recruitmentId;
+    private int companyId;
     private String position;
     private int numberOfPosition;
+    private int length;
     private Date startDate;
-    private Date endDate;
     private String requirement;
+    private int recruitmentStatus;
 
-    public RecruitmentDTO() {}
+    public RecruitmentDTO() {
+    }
 
     public RecruitmentDTO(BigInteger recruitmentId, String position,
-                          int numberOfPosition, Date startDate, Date endDate, String requirement) {
+            int numberOfPosition, Date startDate, Date endDate, String requirement) {
         this.recruitmentId = recruitmentId;
         this.position = position;
         this.numberOfPosition = numberOfPosition;
         this.startDate = startDate;
-        this.endDate = endDate;
         this.requirement = requirement;
     }
 
@@ -27,10 +29,25 @@ public class RecruitmentDTO {
         this.position = position;
         this.numberOfPosition = numberOfPosition;
         this.startDate = startDate;
-        this.endDate = endDate;
         this.requirement = requirement;
     }
 
+    public RecruitmentDTO(String string, int i, int j, java.sql.Date valueOf, java.sql.Date valueOf2, String string2) {
+        // TODO Auto-generated constructor stub
+    }
+
+    public RecruitmentDTO(int recruitmentId, int companyId, String position, int quantity, java.sql.Date startDate,
+            String requirements, int recruimentStatus, int length) {
+        // TODO Auto-generated constructor stub
+        this.recruitmentId = BigInteger.valueOf(recruitmentId);
+        this.companyId = companyId;
+        this.position = position;
+        this.numberOfPosition = quantity;
+        this.startDate = startDate;
+        this.requirement = requirements;
+        this.recruitmentStatus = recruimentStatus;
+        this.length = length;
+    }
 
     public BigInteger getRecruitmentId() {
         return recruitmentId;
@@ -64,14 +81,6 @@ public class RecruitmentDTO {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
     public String getRequirement() {
         return requirement;
     }
@@ -79,5 +88,32 @@ public class RecruitmentDTO {
     public void setRequirement(String requirement) {
         this.requirement = requirement;
     }
-}
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
+    public int getRecruitmentStatus() {
+        return recruitmentStatus;
+    }
+
+    public void setRecruitmentStatus(int recruitmentStatus) {
+        this.recruitmentStatus = recruitmentStatus;
+    }
+
+    public void setStartDate(java.sql.Date startDate) {
+        this.startDate = startDate;
+    }
+}

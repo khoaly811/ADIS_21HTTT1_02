@@ -5,6 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import dto.RecruitmentDTO;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class recruitmentDB {
     private static Connection connect = DataConnection.connect;
 
@@ -70,6 +75,30 @@ public class recruitmentDB {
             System.out.println("Failed to create a new proposal.");
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static ObservableList<RecruitmentDTO> getRecruitments() {
+        // Get all recruitments from the database
+        try {
+            PreparedStatement getRecruitments = connect.prepareStatement("SELECT * FROM recruitment");
+            getRecruitments.execute();
+
+            ObservableList<RecruitmentDTO> recruitments = FXCollections.observableArrayList();
+            while (getRecruitments.getResultSet().next()) {
+                recruitments.add(new RecruitmentDTO(getRecruitments.getResultSet().getInt(1),
+                        getRecruitments.getResultSet().getInt(2), getRecruitments.getResultSet().getString(3),
+                        getRecruitments.getResultSet().getInt(4), getRecruitments.getResultSet().getDate(5),
+                        getRecruitments.getResultSet().getString(6), getRecruitments.getResultSet().getInt(7),
+                        getRecruitments.getResultSet().getInt(8)));
+            }
+            System.out.println("Recruitments retrieved successfully." + recruitments.toString());
+
+            return recruitments;
+        } catch (SQLException e) {
+            System.out.println("Failed to get recruitments.");
+            e.printStackTrace();
+            return null;
         }
     }
 }

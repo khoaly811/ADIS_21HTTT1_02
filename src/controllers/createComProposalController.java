@@ -3,7 +3,6 @@ package controllers;
 import com.jfoenix.controls.JFXButton;
 
 import DataAccessLayer.DataConnection;
-import DataAccessLayer.comAccDB;
 import DataAccessLayer.recruitmentDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +43,8 @@ public class createComProposalController {
             alert.showAndWait();
             return;
         } else {
-            if (recruitmentDB.createProposal(DataConnection.loginedAccount.getMemberID().intValue(), position, 0, 0,
+            if (recruitmentDB.createProposal(DataConnection.loginedAccount.getMemberID().intValue(), position,
+                    Integer.valueOf(quantity), Integer.valueOf(length),
                     jobDescription)) {
                 // Show success message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
