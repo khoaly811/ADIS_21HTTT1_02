@@ -84,9 +84,35 @@ public class recruitmentDB {
     }
 
     public static ObservableList<RecruitmentDTO> getRecruitments() {
+        // Get all recruitments from the database sorted by recruitment status
+        try {
+            PreparedStatement getRecruitments = connect
+                    .prepareStatement("SELECT * FROM recruitment ORDER BY recruitment_status");
+            getRecruitments.execute();
+
+            ObservableList<RecruitmentDTO> recruitments = FXCollections.observableArrayList();
+            while (getRecruitments.getResultSet().next()) {
+                recruitments.add(new RecruitmentDTO(getRecruitments.getResultSet().getInt(1),
+                        getRecruitments.getResultSet().getInt(2), getRecruitments.getResultSet().getString(3),
+                        getRecruitments.getResultSet().getInt(4), getRecruitments.getResultSet().getDate(5),
+                        getRecruitments.getResultSet().getString(6), getRecruitments.getResultSet().getInt(7),
+                        getRecruitments.getResultSet().getInt(8)));
+            }
+            System.out.println("Recruitments retrieved successfully." + recruitments.toString());
+
+            return recruitments;
+        } catch (SQLException e) {
+            System.out.println("Failed to get recruitments.");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ObservableList<RecruitmentDTO> getPendingRecruitments() {
         // Get all recruitments from the database
         try {
-            PreparedStatement getRecruitments = connect.prepareStatement("SELECT * FROM recruitment");
+            PreparedStatement getRecruitments = connect
+                    .prepareStatement("SELECT * FROM recruitment WHERE recruitment_status = 0");
             getRecruitments.execute();
 
             ObservableList<RecruitmentDTO> recruitments = FXCollections.observableArrayList();
