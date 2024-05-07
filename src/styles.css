@@ -1,7 +1,23 @@
 #addProposalBtn {
   -fx-background-color: #4caf50;
+  background-color: #4caf50;
 }
 
 #createBtn {
   -fx-background-color: #4caf50;
+  background-color: #4caf50;
+}
+
+#editBtn {
+  -fx-background-color: #4caf50;
+  background-color: #4caf50;
+}
+
+#deleteBtn {
+  -fx-background-color: #f44336;
+  background-color: #f44336;
+}
+
+.table-column {
+  -fx-alignment: CENTER;
 }

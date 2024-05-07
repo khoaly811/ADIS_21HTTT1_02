@@ -6,27 +6,24 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import dto.RecruitmentDTO;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class recruitmentDB {
     private static Connection connect = DataConnection.connect;
 
-    private static int numberOfRecruitment() {
-        int count = 0;
+    private static int biggestRecruitmentId() {
         try {
-            // Count the number of recruitments in the database
-            PreparedStatement countRecruitment = connect.prepareStatement("SELECT COUNT(*) FROM recruitment");
-            countRecruitment.execute();
-            count = countRecruitment.getResultSet().next() ? countRecruitment.getResultSet().getInt(1) : 0;
+            // Get the biggest recruitment id from the database
+            PreparedStatement getBiggestRecruitmentId = connect
+                    .prepareStatement("SELECT MAX(recruitment_id) FROM recruitment");
+            getBiggestRecruitmentId.execute();
 
-            System.out.println("Number of recruitments: " + count);
-            return count;
+            return getBiggestRecruitmentId.getResultSet().getInt(1);
         } catch (SQLException e) {
-            System.out.println("Failed to count the number of recruitments.");
+            System.out.println("Failed to get the biggest recruitment id.");
             e.printStackTrace();
-            return -1;
+            return 0;
         }
     }
 
@@ -61,7 +58,7 @@ public class recruitmentDB {
             // Insert a new proposal into the database
             PreparedStatement insertProposal = connect.prepareStatement(
                     "INSERT INTO recruitment (recruitment_id, company_id, position, number_of_positions, length, requirements) VALUES (?, ?, ?, ?, ?, ?)");
-            insertProposal.setInt(1, numberOfRecruitment() + 1);
+            insertProposal.setInt(1, biggestRecruitmentId() + 1);
             insertProposal.setInt(2, company_id);
             insertProposal.setString(3, position);
             insertProposal.setInt(4, quantity);

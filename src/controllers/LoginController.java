@@ -32,6 +32,11 @@ public class LoginController {
     @FXML
     private void initialize() {
         Platform.runLater(() -> phoneTxtField.requestFocus());
+        phoneTxtField.setOnKeyPressed(e -> {
+            if (e.getCode().toString().equals("ENTER")) {
+                passwordTxtField.requestFocus();
+            }
+        });
         passwordTxtField.setOnKeyPressed(e -> {
             if (e.getCode().toString().equals("ENTER")) {
                 try {
@@ -47,6 +52,9 @@ public class LoginController {
     private void login() throws Exception {
         String phone = phoneTxtField.getText();
         String password = passwordTxtField.getText();
+
+        // String phone = "staff";
+        // String password = "staff";
 
         if (phone.isEmpty() || password.isEmpty()) {
             // Show error message

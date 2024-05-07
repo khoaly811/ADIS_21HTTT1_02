@@ -9,20 +9,19 @@ import dto.MemberDTO;
 public class comAccDB {
     private static Connection connect = DataConnection.connect;
 
-    private static int numberOfAcc() {
-        int count = 0;
+    private static int biggestID() {
         try {
-            // Count the number of accounts in the database
-            PreparedStatement countAcc = connect.prepareStatement("SELECT COUNT(*) FROM member");
-            countAcc.execute();
-            count = countAcc.getResultSet().next() ? countAcc.getResultSet().getInt(1) : 0;
+            // Get the biggest member ID in the database
+            PreparedStatement biggestID = connect.prepareStatement("SELECT MAX(member_id) FROM member");
+            biggestID.execute();
 
-            System.out.println("Number of accounts: " + count);
+            // Return the biggest member ID
+            return biggestID.getResultSet().getInt(1);
         } catch (SQLException e) {
-            System.out.println("Failed to count the number of accounts.");
+            System.out.println("Failed to get the biggest member ID.");
             e.printStackTrace();
+            return 0;
         }
-        return count;
     }
 
     public static boolean createNewComAcc(MemberDTO companyAccount) {
@@ -32,7 +31,7 @@ public class comAccDB {
                     "INSERT INTO member (member_id,member_type, member_name, address, phone, representative, email, password, tax_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Set the values for the new company account
-            createComAcc.setInt(1, numberOfAcc() + 1);
+            createComAcc.setInt(1, biggestID() + 1);
             createComAcc.setInt(2, 2);
             createComAcc.setString(3, companyAccount.getMemberName());
             createComAcc.setString(4, companyAccount.getMemberAddress());
