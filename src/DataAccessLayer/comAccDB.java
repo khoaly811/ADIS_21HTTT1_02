@@ -15,8 +15,11 @@ public class comAccDB {
             PreparedStatement biggestID = connect.prepareStatement("SELECT MAX(member_id) FROM member");
             biggestID.execute();
 
-            // Return the biggest member ID
-            return biggestID.getResultSet().getInt(1);
+            if (biggestID.getResultSet().next()) {
+                return biggestID.getResultSet().getInt(1);
+            } else {
+                return 0;
+            }
         } catch (SQLException e) {
             System.out.println("Failed to get the biggest member ID.");
             e.printStackTrace();

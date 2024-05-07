@@ -1,9 +1,7 @@
 package controllers;
 
 import java.sql.Date;
-
 import com.jfoenix.controls.JFXButton;
-
 import DataAccessLayer.recruitmentDB;
 import dto.RecruitmentDTO;
 import javafx.fxml.FXML;
@@ -14,11 +12,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.kordamp.ikonli.javafx.*;
-import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 public class staffProposalController {
 
@@ -52,16 +47,17 @@ public class staffProposalController {
         jdCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, String>("requirement"));
 
         actionCol.setCellFactory(param -> new TableCell<>() {
-            private final JFXButton editButton = new JFXButton("Edit");
+            private final JFXButton appoveButton = new JFXButton("Approve");
             private final JFXButton deleteButton = new JFXButton("Delete");
-            private final HBox buttonsBox = new HBox(editButton, deleteButton);
+            private final HBox buttonsBox = new HBox(appoveButton, deleteButton);
             {
-                editButton.setId("editBtn");
+                appoveButton.setId("approveBtn");
                 deleteButton.setId("deleteBtn");
-                editButton.setOnAction(event -> {
-                    RecruitmentDTO recruitment = getTableView().getItems().get(getIndex());
+                appoveButton.setOnAction(event -> {
+                    int recruitmentID = getTableView().getItems().get(getIndex()).getRecruitmentId().intValue();
                     // Handle edit action here
-                    System.out.println("Edit " + recruitment.getPosition());
+                    System.out.println("Approve " + recruitmentID);
+                    recruitmentDB.updateRecruitmentStatus(recruitmentID, 1);
                 });
 
                 deleteButton.setOnAction(event -> {

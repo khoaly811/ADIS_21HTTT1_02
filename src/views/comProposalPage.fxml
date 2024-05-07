@@ -69,6 +69,7 @@
                   <TableColumn fx:id="startDateCol" prefWidth="200.0" text="Start date" />
                   <TableColumn fx:id="jdCol" prefWidth="200.0" text="Job description" />
                   <TableColumn fx:id="adsFormCol" prefWidth="200.0" text="Advertising form" />
+                  <TableColumn fx:id="statusCol" prefWidth="149.0" text="Status" />
                </columns>
             </TableView>
             <Label layoutX="78.0" layoutY="82.0" text="Your advertising proposal">

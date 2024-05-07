@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.Optional;
-
 import DataAccessLayer.comAccDB;
 import dto.MemberDTO;
 import javafx.fxml.FXML;

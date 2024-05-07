@@ -1,7 +1,6 @@
 package controllers;
 
 import com.jfoenix.controls.JFXButton;
-
 import DataAccessLayer.DataConnection;
 import DataAccessLayer.recruitmentDB;
 import javafx.fxml.FXML;
