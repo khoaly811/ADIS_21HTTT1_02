@@ -1,21 +1,21 @@
-#addProposalBtn {
+#addProposalBtn,
+#createBtn,
+#approveBtn,
+#viewBtn,
+#saveBtn {
   -fx-background-color: #4caf50;
   background-color: #4caf50;
 }
 
-#createBtn {
-  -fx-background-color: #4caf50;
-  background-color: #4caf50;
-}
-
-#approveBtn {
-  -fx-background-color: #4caf50;
-  background-color: #4caf50;
-}
-
-#deleteBtn {
+#deleteBtn,
+#closeBtn {
   -fx-background-color: #f44336;
   background-color: #f44336;
+}
+
+#editBtn {
+  -fx-background-color: #2196f3;
+  background-color: #2196f3;
 }
 
 .table-column {

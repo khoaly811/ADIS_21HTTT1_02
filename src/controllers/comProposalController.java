@@ -46,6 +46,9 @@ public class comProposalController {
     TableColumn<RecruitmentDTO, String> statusCol;
 
     @FXML
+    TableColumn<RecruitmentDTO, String> adsFormCol;
+
+    @FXML
     TableColumn<RecruitmentDTO, Void> actionCol;
 
     @FXML
@@ -64,13 +67,34 @@ public class comProposalController {
                             return new SimpleStringProperty("Pending approval");
                         } else if (recruitmentDTO.getRecruitmentStatus() == 1) {
                             return new SimpleStringProperty("Approved");
+                        } else if (recruitmentDTO.getRecruitmentStatus() == 2) {
+                            return new SimpleStringProperty("Done");
                         } else {
                             return new SimpleStringProperty("Rejected");
                         }
                     }
                 });
 
+        adsFormCol.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<RecruitmentDTO, String>, ObservableValue<String>>() {
+                    @Override
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<RecruitmentDTO, String> params) {
+                        RecruitmentDTO recruitmentDTO = params.getValue();
+                        System.out.println(recruitmentDTO.getAdsForm());
+                        if (recruitmentDTO.getAdsForm() == 1) {
+                            return new SimpleStringProperty("Newspaper");
+                        } else if (recruitmentDTO.getAdsForm() == 2) {
+                            return new SimpleStringProperty("Banner");
+                        } else if (recruitmentDTO.getAdsForm() == 3) {
+                            return new SimpleStringProperty("Online");
+                        } else {
+                            return new SimpleStringProperty("");
+                        }
+                    }
+                });
+
         actionCol.setCellFactory(param -> new TableCell<>() {
+            // If status is pending, show edit button
             private final JFXButton editButton = new JFXButton("Edit");
             {
                 editButton.setId("editBtn");
@@ -79,10 +103,40 @@ public class comProposalController {
                     // Handle edit action here
                     System.out.println("Edit " + recruitmentID);
                     try {
-                        Parent root = FXMLLoader.load(getClass().getResource("../views/updateProposalPage.fxml"));
+                        // Create an instance of the controller
+                        updateProposalController controller = new updateProposalController();
+
+                        controller.setRecruitmentId(recruitmentID);
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/updateProposalPage.fxml"));
+                        loader.setController(controller);
+
+                        Parent root = loader.load();
                         Stage window = (Stage) avaImgView.getScene().getWindow();
                         window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
 
+            private final JFXButton viewButton = new JFXButton("View");
+            {
+                viewButton.setId("viewBtn");
+                viewButton.setOnAction(event -> {
+                    int recruitmentID = getTableView().getItems().get(getIndex()).getRecruitmentId().intValue();
+                    try {
+                        // Create an instance of the controller
+                        viewProposalController controller = new viewProposalController();
+
+                        controller.setRecruitmentId(recruitmentID);
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/viewProposalPage.fxml"));
+                        loader.setController(controller);
+
+                        Parent root = loader.load();
+                        Stage window = (Stage) avaImgView.getScene().getWindow();
+                        window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -95,7 +149,16 @@ public class comProposalController {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    setGraphic(editButton);
+                    int status = getTableView().getItems().get(getIndex()).getRecruitmentStatus();
+                    System.out.println(status + " is the status");
+                    if (status == 1) {
+                        setGraphic(editButton);
+                    } else if (status == 2) {
+                        System.out.println("View button");
+                        setGraphic(viewButton);
+                    } else {
+                        setGraphic(null);
+                    }
                 }
             }
         });
@@ -124,4 +187,5 @@ public class comProposalController {
             e.printStackTrace();
         }
     }
+
 }

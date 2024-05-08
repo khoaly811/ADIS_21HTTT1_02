@@ -96,7 +96,7 @@ public class recruitmentDB {
                         getRecruitments.getResultSet().getInt(2), getRecruitments.getResultSet().getString(3),
                         getRecruitments.getResultSet().getInt(4), getRecruitments.getResultSet().getDate(5),
                         getRecruitments.getResultSet().getString(6), getRecruitments.getResultSet().getInt(7),
-                        getRecruitments.getResultSet().getInt(8)));
+                        getRecruitments.getResultSet().getInt(8), getRecruitments.getResultSet().getInt(9)));
             }
             System.out.println("Recruitments retrieved successfully." + recruitments.toString());
 
@@ -121,7 +121,7 @@ public class recruitmentDB {
                         getRecruitments.getResultSet().getInt(2), getRecruitments.getResultSet().getString(3),
                         getRecruitments.getResultSet().getInt(4), getRecruitments.getResultSet().getDate(5),
                         getRecruitments.getResultSet().getString(6), getRecruitments.getResultSet().getInt(7),
-                        getRecruitments.getResultSet().getInt(8)));
+                        getRecruitments.getResultSet().getInt(8), getRecruitments.getResultSet().getInt(9)));
             }
             System.out.println("Recruitments retrieved successfully." + recruitments.toString());
 
@@ -146,6 +146,53 @@ public class recruitmentDB {
             return true;
         } catch (SQLException e) {
             System.out.println("Failed to update recruitment status.");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static RecruitmentDTO findRecruitmentByID(int recruitment_id) {
+        try {
+            PreparedStatement findRecruitment = connect
+                    .prepareStatement("SELECT * FROM recruitment WHERE recruitment_id = ?");
+            findRecruitment.setInt(1, recruitment_id);
+            findRecruitment.execute();
+
+            if (findRecruitment.getResultSet().next()) {
+                return new RecruitmentDTO(findRecruitment.getResultSet().getInt(1),
+                        findRecruitment.getResultSet().getInt(2), findRecruitment.getResultSet().getString(3),
+                        findRecruitment.getResultSet().getInt(4), findRecruitment.getResultSet().getDate(5),
+                        findRecruitment.getResultSet().getString(6), findRecruitment.getResultSet().getInt(7),
+                        findRecruitment.getResultSet().getInt(8), findRecruitment.getResultSet().getInt(9));
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to find recruitment by ID.");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static boolean updateRecruitment(RecruitmentDTO recruitment) {
+        try {
+            // Convert util.Date to sql.Date
+            java.sql.Date sqlStartDate = new java.sql.Date(recruitment.getStartDate().getTime());
+
+            // Update the recruitment in the database
+            PreparedStatement updateRecruitment = connect.prepareStatement(
+                    "UPDATE recruitment SET start_date = ?, ads_form = ? WHERE recruitment_id = ?");
+            updateRecruitment.setDate(1, sqlStartDate);
+            updateRecruitment.setInt(2, recruitment.getAdsForm());
+            updateRecruitment.setInt(3, recruitment.getRecruitmentId().intValue());
+            updateRecruitment.execute();
+
+            recruitmentDB.updateRecruitmentStatus(recruitment.getRecruitmentId().intValue(), 2);
+
+            System.out.println("Recruitment updated successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Failed to update recruitment.");
             e.printStackTrace();
             return false;
         }
