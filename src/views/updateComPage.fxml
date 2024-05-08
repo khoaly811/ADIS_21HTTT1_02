@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.updateComController">
+   <children>
+      <JFXButton layoutX="67.0" layoutY="46.0" prefHeight="83.0" prefWidth="162.0" text="Back">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="91.0" layoutY="277.0" text="Company name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="comNameTxtField" layoutX="94.0" layoutY="325.0" prefHeight="55.0"
+         prefWidth="341.0" />
+      <Label layoutX="683.0" layoutY="277.0" text="Email">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1277.0" layoutY="277.0" text="Phone">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="617.0" text="Discount rate">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="683.0" layoutY="617.0" text="Description">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="desTxtField" layoutX="683.0" layoutY="665.0" prefHeight="55.0"
+         prefWidth="341.0" />
+      <TextField fx:id="discountTxtField" layoutX="91.0" layoutY="665.0" prefHeight="55.0"
+         prefWidth="341.0" />
+      <TextField fx:id="phoneTxtField" layoutX="1277.0" layoutY="325.0" prefHeight="55.0"
+         prefWidth="341.0" />
+      <TextField fx:id="emailTxtField" layoutX="683.0" layoutY="325.0" prefHeight="55.0"
+         prefWidth="341.0" />
+      <JFXButton fx:id="saveBtn" layoutX="778.0" layoutY="862.0" prefHeight="72.0" prefWidth="162.0"
+         text="Save" onAction="#saveCom">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
