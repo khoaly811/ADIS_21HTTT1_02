@@ -12,6 +12,8 @@ public class MemberDTO {
     private String memberEmail;
     private String memberPassword;
     private String taxNumber;
+    private Integer discount;
+    private String description;
 
     public MemberDTO() {
     }
@@ -29,6 +31,18 @@ public class MemberDTO {
         this.memberPassword = password;
     }
 
+    // Company account constructor
+    public MemberDTO(BigInteger member_id, String member_name, String email, String address, String phone,
+            String representative, String tax_number) {
+        this.memberID = member_id;
+        this.memberName = member_name;
+        this.memberEmail = email;
+        this.memberAddress = address;
+        this.memberPhone = phone;
+        this.memberRepresentative = representative;
+        this.taxNumber = tax_number;
+    }
+
     public MemberDTO(BigInteger member_id, int member_type, String member_name, String address, String phone,
             String representative, String email, String password, String tax_number) {
         this.memberID = member_id;
@@ -40,6 +54,46 @@ public class MemberDTO {
         this.memberEmail = email;
         this.memberPassword = password;
         this.taxNumber = tax_number;
+    }
+
+    public MemberDTO(BigInteger member_id, String member_name, String email, String address,
+            String phone, String representative, String tax_number, String password, Integer discount) {
+        this.memberID = member_id;
+        this.memberName = member_name;
+        this.memberAddress = address;
+        this.memberPhone = phone;
+        this.memberRepresentative = representative;
+        this.memberEmail = email;
+        this.memberPassword = password;
+        this.taxNumber = tax_number;
+        this.discount = discount;
+    }
+
+    public MemberDTO(BigInteger member_id, int member_type, String member_name, String email, String address,
+            String phone, String representative, String tax_number, String password, Integer discount,
+            String description) {
+        this.memberID = member_id;
+        this.memberType = member_type;
+        this.memberName = member_name;
+        this.memberAddress = address;
+        this.memberPhone = phone;
+        this.memberRepresentative = representative;
+        this.memberEmail = email;
+        this.memberPassword = password;
+        this.taxNumber = tax_number;
+        this.discount = discount;
+        this.description = description;
+    }
+
+    public MemberDTO(BigInteger memberID, String memberName, String email, String phone, String tax_number,
+            String description, Integer discount) {
+        this.memberID = memberID;
+        this.memberName = memberName;
+        this.memberEmail = email;
+        this.memberPhone = phone;
+        this.taxNumber = tax_number;
+        this.description = description;
+        this.discount = discount;
     }
 
     public BigInteger getMemberID() {
@@ -114,4 +168,19 @@ public class MemberDTO {
         this.taxNumber = tax_number;
     }
 
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

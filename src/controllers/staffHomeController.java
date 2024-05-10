@@ -32,4 +32,15 @@ public class staffHomeController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void showComPage() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../views/staffComPage.fxml"));
+            Stage window = (Stage) avaImgView.getScene().getWindow();
+            window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

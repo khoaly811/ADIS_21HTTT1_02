@@ -12,6 +12,7 @@ public class RecruitmentDTO {
     private Date startDate;
     private String requirement;
     private int recruitmentStatus;
+    private int adsForm;
 
     public RecruitmentDTO() {
     }
@@ -37,7 +38,7 @@ public class RecruitmentDTO {
     }
 
     public RecruitmentDTO(int recruitmentId, int companyId, String position, int quantity, java.sql.Date startDate,
-            String requirements, int recruimentStatus, int length) {
+            String requirements, int recruimentStatus, int length, int adsForm) {
         // TODO Auto-generated constructor stub
         this.recruitmentId = BigInteger.valueOf(recruitmentId);
         this.companyId = companyId;
@@ -47,6 +48,7 @@ public class RecruitmentDTO {
         this.requirement = requirements;
         this.recruitmentStatus = recruimentStatus;
         this.length = length;
+        this.adsForm = adsForm;
     }
 
     public BigInteger getRecruitmentId() {
@@ -115,5 +117,17 @@ public class RecruitmentDTO {
 
     public void setStartDate(java.sql.Date startDate) {
         this.startDate = startDate;
+    }
+
+    public void setRecruitmentId(int recruitmentId) {
+        this.recruitmentId = BigInteger.valueOf(recruitmentId);
+    }
+
+    public int getAdsForm() {
+        return adsForm;
+    }
+
+    public void setAdsForm(int adsForm) {
+        this.adsForm = adsForm;
     }
 }

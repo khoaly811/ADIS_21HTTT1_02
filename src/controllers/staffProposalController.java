@@ -78,7 +78,7 @@ public class staffProposalController {
             }
         });
 
-        tableViewProposal.setItems(recruitmentDB.getRecruitments());
+        tableViewProposal.setItems(recruitmentDB.getPendingRecruitments());
     }
 
     @FXML

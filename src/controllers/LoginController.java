@@ -53,8 +53,13 @@ public class LoginController {
         String phone = phoneTxtField.getText();
         String password = passwordTxtField.getText();
 
+        // staff acc
         // String phone = "staff";
         // String password = "staff";
+
+        // com acc
+        // String phone = "luan";
+        // String password = "pass";
 
         if (phone.isEmpty() || password.isEmpty()) {
             // Show error message
