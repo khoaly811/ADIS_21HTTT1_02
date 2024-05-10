@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="./styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.updateProposalController">
+   <children>
+      <Label fx:id="lengTxtField" layoutX="667.0" layoutY="89.0" text="Update advertising proposal">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="saveBtn" layoutX="852.0" layoutY="822.0" onAction="#createProposal" prefHeight="98.0" prefWidth="186.0" ripplerFill="RED" stylesheets="@../styles.css" text="Save">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="458.0" layoutY="192.0" text="Position">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Label fx:id="posTxt" layoutX="1153.0" layoutY="269.0" text="Label" />
+      <Label layoutX="1138.0" layoutY="187.0" text="Quantity">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Label layoutX="480.0" layoutY="401.0" text="Label" />
+      <Label layoutX="1100.0" layoutY="345.0" text="Advertisement length">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Label layoutX="1138.0" layoutY="483.0" text="Job description">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Label layoutX="460.0" layoutY="514.0" text="Advertising form">
+         <font>
+            <Font size="27.0" />
+         </font></Label>
+      <Label layoutX="1128.0" layoutY="410.0" text="Label" />
+      <Label layoutX="460.0" layoutY="317.0" text="Start date">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="1185.0" layoutY="578.0" prefHeight="200.0" prefWidth="322.0" />
+      <Label layoutX="464.0" layoutY="257.0" text="Label" />
+      <JFXComboBox layoutX="491.0" layoutY="591.0" />
+   </children>
+</AnchorPane>

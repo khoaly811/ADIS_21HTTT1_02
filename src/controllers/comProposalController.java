@@ -1,6 +1,9 @@
 package controllers;
 
 import java.sql.Date;
+
+import com.jfoenix.controls.JFXButton;
+
 import DataAccessLayer.recruitmentDB;
 import dto.RecruitmentDTO;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,6 +46,9 @@ public class comProposalController {
     TableColumn<RecruitmentDTO, String> statusCol;
 
     @FXML
+    TableColumn<RecruitmentDTO, Void> actionCol;
+
+    @FXML
     public void initialize() {
         posCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, String>("position"));
         quantityCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, Integer>("numberOfPosition"));
@@ -54,7 +61,7 @@ public class comProposalController {
                     public ObservableValue<String> call(TableColumn.CellDataFeatures<RecruitmentDTO, String> params) {
                         RecruitmentDTO recruitmentDTO = params.getValue();
                         if (recruitmentDTO.getRecruitmentStatus() == 0) {
-                            return new SimpleStringProperty("Pending");
+                            return new SimpleStringProperty("Pending approval");
                         } else if (recruitmentDTO.getRecruitmentStatus() == 1) {
                             return new SimpleStringProperty("Approved");
                         } else {
@@ -62,6 +69,37 @@ public class comProposalController {
                         }
                     }
                 });
+
+        actionCol.setCellFactory(param -> new TableCell<>() {
+            private final JFXButton editButton = new JFXButton("Edit");
+            {
+                editButton.setId("editBtn");
+                editButton.setOnAction(event -> {
+                    int recruitmentID = getTableView().getItems().get(getIndex()).getRecruitmentId().intValue();
+                    // Handle edit action here
+                    System.out.println("Edit " + recruitmentID);
+                    try {
+                        Parent root = FXMLLoader.load(getClass().getResource("../views/updateProposalPage.fxml"));
+                        Stage window = (Stage) avaImgView.getScene().getWindow();
+                        window.setScene(new Scene(root, window.getWidth(), window.getHeight()));
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(editButton);
+                }
+            }
+        });
+
         tableViewProposal.setItems(recruitmentDB.getRecruitments());
     }
 
