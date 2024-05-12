@@ -70,6 +70,10 @@ public class comAccDB {
 
             // If the account exists, get the account information
             if (loginAcc.getResultSet().next()) {
+                for (int i = 1; i <= loginAcc.getMetaData().getColumnCount(); i++) {
+                    System.out.println(loginAcc.getMetaData().getColumnName(i));
+                }
+
                 BigInteger memberID = BigInteger.valueOf(loginAcc.getResultSet().getLong(1));
                 int memberType = loginAcc.getResultSet().getInt(2);
                 String memberName = loginAcc.getResultSet().getString(3);
@@ -84,6 +88,7 @@ public class comAccDB {
                 MemberDTO member = new MemberDTO(memberID, memberType, memberName,
                         memberEmail, memberAddress, memberPhone,
                         memberRepresentative, taxNumber, memberPassword);
+                System.out.println(memberID + "flskj");
 
                 DataConnection.loginedAccount = member;
 
@@ -164,7 +169,7 @@ public class comAccDB {
         try {
             // Update the account in the database
             PreparedStatement updateAcc = connect.prepareStatement(
-                    "UPDATE member SET member_name = ?, email = ?, address = ?, phone = ?, representative = ?, tax_number = ?, password = ? WHERE member_id = ?");
+                    "UPDATE member SET member_name = ?, email = ?, address = ?, phone = ?, representative = ?, tax_number = ? WHERE member_id = ?");
 
             // Set the values for the account
             updateAcc.setString(1, account.getMemberName());
@@ -173,8 +178,7 @@ public class comAccDB {
             updateAcc.setString(4, account.getMemberPhone());
             updateAcc.setString(5, account.getMemberRepresentative());
             updateAcc.setString(6, account.getTaxNumber());
-            updateAcc.setString(7, account.getMemberPassword());
-            updateAcc.setLong(8, account.getMemberID().longValue());
+            updateAcc.setLong(7, account.getMemberID().longValue());
 
             // Execute the query
             updateAcc.executeUpdate();
@@ -193,25 +197,23 @@ public class comAccDB {
     public static MemberDTO findMemberbyID(Integer id) {
         try {
             // Find the account by ID
-            PreparedStatement findMember = connect.prepareStatement("SELECT * FROM member WHERE member_id = ?");
+            PreparedStatement findMember = connect.prepareStatement(
+                    "SELECT * FROM member left join discount on member_id = company_id WHERE member_id = ?");
             findMember.setInt(1, id);
             findMember.execute();
 
-            if (findMember.getResultSet().next()) {
-                BigInteger memberID = BigInteger.valueOf(findMember.getResultSet().getLong(1));
-                int memberType = findMember.getResultSet().getInt(2);
-                String memberName = findMember.getResultSet().getString(3);
-                String memberEmail = findMember.getResultSet().getString(4);
-                String memberAddress = findMember.getResultSet().getString(5);
-                String memberPhone = findMember.getResultSet().getString(6);
-                String memberRepresentative = findMember.getResultSet().getString(7);
-                String taxNumber = findMember.getResultSet().getString(8);
-                String memberPassword = findMember.getResultSet().getString(9);
+            for (int i = 1; i <= findMember.getMetaData().getColumnCount(); i++) {
+                System.out.println(findMember.getMetaData().getColumnName(i));
+            }
 
-                // Create a new MemberDTO object
-                MemberDTO member = new MemberDTO(memberID, memberType, memberName,
-                        memberEmail, memberAddress, memberPhone,
-                        memberRepresentative, taxNumber, memberPassword);
+            if (findMember.getResultSet().next()) {
+                MemberDTO member = new MemberDTO(BigInteger.valueOf(findMember.getResultSet().getLong(1)),
+                        findMember.getResultSet().getString(3),
+                        findMember.getResultSet().getString(4),
+                        findMember.getResultSet().getString(6),
+                        findMember.getResultSet().getString(8),
+                        findMember.getResultSet().getString(11),
+                        findMember.getResultSet().getInt(12));
 
                 System.out.println("Account found.");
                 return member;

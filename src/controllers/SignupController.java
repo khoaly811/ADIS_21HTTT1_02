@@ -88,6 +88,10 @@ public class SignupController {
                     System.out.println("Alert Closed!");
                 }
             } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Failed to create company account");
+                alert.showAndWait();
             }
         }
     }

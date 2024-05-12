@@ -1,5 +1,6 @@
 package DataAccessLayer;
 
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -83,11 +84,13 @@ public class recruitmentDB {
         }
     }
 
-    public static ObservableList<RecruitmentDTO> getRecruitments() {
+    public static ObservableList<RecruitmentDTO> getRecruitments(BigInteger memberID) {
         // Get all recruitments from the database sorted by recruitment status
         try {
+            System.out.println("Member ID: " + memberID.toString());
             PreparedStatement getRecruitments = connect
-                    .prepareStatement("SELECT * FROM recruitment ORDER BY recruitment_status");
+                    .prepareStatement("SELECT * FROM recruitment  WHERE company_id = ? ORDER BY recruitment_status");
+            getRecruitments.setInt(1, memberID.intValue());
             getRecruitments.execute();
 
             ObservableList<RecruitmentDTO> recruitments = FXCollections.observableArrayList();

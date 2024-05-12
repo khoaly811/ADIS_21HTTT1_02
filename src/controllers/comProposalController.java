@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.jfoenix.controls.JFXButton;
 
+import DataAccessLayer.DataConnection;
 import DataAccessLayer.recruitmentDB;
 import dto.RecruitmentDTO;
 import javafx.beans.property.SimpleStringProperty;
@@ -163,7 +164,7 @@ public class comProposalController {
             }
         });
 
-        tableViewProposal.setItems(recruitmentDB.getRecruitments());
+        tableViewProposal.setItems(recruitmentDB.getRecruitments(DataConnection.loginedAccount.getMemberID()));
     }
 
     @FXML

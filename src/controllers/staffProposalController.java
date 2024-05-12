@@ -21,6 +21,9 @@ public class staffProposalController {
     TableView<RecruitmentDTO> tableViewProposal;
 
     @FXML
+    TableColumn<RecruitmentDTO, Integer> comCol;
+
+    @FXML
     TableColumn<RecruitmentDTO, String> posCol;
 
     @FXML
@@ -40,6 +43,7 @@ public class staffProposalController {
 
     @FXML
     public void initialize() {
+        comCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, Integer>("companyId"));
         posCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, String>("position"));
         quantityCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, Integer>("numberOfPosition"));
         lengthCol.setCellValueFactory(new PropertyValueFactory<RecruitmentDTO, Integer>("length"));
@@ -58,12 +62,15 @@ public class staffProposalController {
                     // Handle edit action here
                     System.out.println("Approve " + recruitmentID);
                     recruitmentDB.updateRecruitmentStatus(recruitmentID, 1);
+
+                    tableViewProposal.setItems(recruitmentDB.getPendingRecruitments());
                 });
 
                 deleteButton.setOnAction(event -> {
                     RecruitmentDTO recruitment = getTableView().getItems().get(getIndex());
                     // Handle delete action here
                     System.out.println("Delete " + recruitment.getRecruitmentId());
+                    recruitmentDB.updateRecruitmentStatus(recruitment.getRecruitmentId().intValue(), 5);
                 });
             }
 

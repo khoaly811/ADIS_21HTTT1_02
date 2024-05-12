@@ -21,3 +21,8 @@
 .table-column {
   -fx-alignment: CENTER;
 }
+
+#background {
+  -fx-background-color: #fff9d0;
+  background-color: #fff9d0;
+}

@@ -8,34 +8,87 @@
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-   prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+   prefHeight="1080.0" prefWidth="1920.0" stylesheets="./styles.css"
+   xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="controllers.SignupController">
    <children>
-      <Label layoutX="835.0" layoutY="170.0" text="Create company account">
+      <Label layoutX="694.0" layoutY="89.0" text="Create company account">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="547.0" layoutY="225.0" text="Company name">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="796.0" layoutY="223.0" text="Company name" />
-      <Label layoutX="796.0" layoutY="283.0" text="Tax number" />
-      <Label layoutX="1040.0" layoutY="222.0" text="Address" />
-      <Label layoutX="1040.0" layoutY="282.0" text="Email" />
-      <Label layoutX="796.0" layoutY="346.0" text="Representatives" />
-      <Label layoutX="1041.0" layoutY="346.0" text="Phone number" />
-      <Label layoutX="796.0" layoutY="409.0" text="Password" />
-      <Label layoutX="1040.0" layoutY="409.0" text="Confirm password" />
-      <TextField fx:id="comNameTxtField" layoutX="796.0" layoutY="245.0" />
-      <TextField fx:id="addressTxtField" layoutX="1040.0" layoutY="244.0" />
-      <TextField fx:id="taxNumTxtField" layoutX="796.0" layoutY="305.0" />
-      <TextField fx:id="emailTxtField" layoutX="1040.0" layoutY="304.0" />
-      <TextField fx:id="representativeTxtField" layoutX="796.0" layoutY="367.0" />
-      <TextField fx:id="phoneTxtField" layoutX="1040.0" layoutY="367.0" />
-      <TextField fx:id="passwordTxtField" layoutX="796.0" layoutY="430.0" />
-      <TextField fx:id="confirmPasswordTxtField" layoutX="1040.0" layoutY="430.0" />
-      <Button fx:id="createBtn" layoutX="901.0" layoutY="476.0" mnemonicParsing="false"
-         onAction="#createComAcc" prefHeight="25.0" prefWidth="184.0" text="Create" />
-      <Label layoutX="902.0" layoutY="530.0" text="Alredy has an account ?" />
-      <Hyperlink fx:id="loginPageHyperlink" layoutX="1040.0" layoutY="527.0" text="Log in"
-         onAction="#showLoginPage" />
+      <Label layoutX="547.0" layoutY="356.0" text="Tax number">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1106.0" layoutY="225.0" text="Address">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1110.0" layoutY="356.0" text="Email">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="547.0" layoutY="482.0" text="Representatives">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1110.0" layoutY="482.0" text="Phone number">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="547.0" layoutY="597.0" text="Password">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1112.0" layoutY="597.0" text="Confirm password">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="comNameTxtField" layoutX="547.0" layoutY="279.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="addressTxtField" layoutX="1110.0" layoutY="279.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="taxNumTxtField" layoutX="547.0" layoutY="402.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="emailTxtField" layoutX="1110.0" layoutY="402.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="representativeTxtField" layoutX="547.0" layoutY="532.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="phoneTxtField" layoutX="1110.0" layoutY="532.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="passwordTxtField" layoutX="547.0" layoutY="644.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <TextField fx:id="confirmPasswordTxtField" layoutX="1110.0" layoutY="644.0" prefHeight="45.0"
+         prefWidth="350.0" />
+      <Button fx:id="createBtn" layoutX="866.0" layoutY="846.0" mnemonicParsing="false"
+         onAction="#createComAcc" prefHeight="57.0" prefWidth="293.0" text="Create">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="807.0" layoutY="731.0" text="Alredy has an account ?">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="loginPageHyperlink" layoutX="1066.0" layoutY="726.0"
+         onAction="#showLoginPage" text="Log in">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Hyperlink>
    </children>
 </Pane>

@@ -10,7 +10,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
    prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController"
+   stylesheets="./styles.css">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="53.0" text="MEET CV"
          textAlignment="CENTER">

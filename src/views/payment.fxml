@@ -9,7 +9,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
    prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaymentController">
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaymentController"
+   stylesheets="./styles.css">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="53.0" text="Payment"
          textAlignment="CENTER">
